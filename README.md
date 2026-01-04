@@ -1,10 +1,6 @@
 # Safeguard AI Server
 
-AI 기반 금융사기 시뮬레이션 및 교육 플랫폼의 백엔드 서버입니다.
-
-## 개요
-
-Safeguard AI Server는 사용자들이 실제 금융사기 상황을 안전하게 체험하고 학습할 수 있도록 돕는 교육용 AI 서버입니다. Google Gemini AI를 활용하여 다양한 사기 시나리오를 시뮬레이션하고, 사용자의 대응을 분석하여 맞춤형 피드백을 제공합니다.
+세이프가드 금융사기 시뮬레이션 AI 서버입니다.
 
 ## 주요 기능
 
@@ -37,73 +33,6 @@ Safeguard AI Server는 사용자들이 실제 금융사기 상황을 안전하�
 - **OCR**: Google Cloud Vision API
 - **Language**: Python 3.12+
 - **Deployment**: Docker
-
-## 설치 및 실행
-
-### 사전 요구사항
-- Python 3.12 이상
-- Google Gemini API 키
-- (선택) Google Cloud Vision API 서비스 계정 키
-
-### 1. 저장소 클론
-```bash
-git clone https://github.com/Jaden-JJH/safeguard-ai.git
-cd safeguard-ai
-```
-
-### 2. 가상환경 생성 및 활성화
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
-
-### 3. 의존성 설치
-```bash
-pip install -r requirements.txt
-```
-
-### 4. 환경 변수 설정
-`.env.example` 파일을 복사하여 `.env` 파일을 생성하고, API 키를 설정합니다:
-
-```bash
-cp .env.example .env
-```
-
-`.env` 파일을 열어 다음 값을 설정합니다:
-```env
-GOOGLE_API_KEY="your-google-gemini-api-key-here"
-BIGKINDS_API_KEY="your-bigkinds-api-key-here"  # 선택사항
-```
-
-**API 키 발급 방법:**
-- Google Gemini API: [https://makersuite.google.com/app/apikey](https://makersuite.google.com/app/apikey)
-- BigKinds API: [https://www.bigkinds.or.kr/](https://www.bigkinds.or.kr/)
-
-### 5. 서버 실행
-```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-
-서버가 실행되면 다음 주소에서 확인할 수 있습니다:
-- API 서버: http://localhost:8000
-- API 문서 (Swagger): http://localhost:8000/docs
-- API 문서 (ReDoc): http://localhost:8000/redoc
-
-## Docker로 실행
-
-### Docker 이미지 빌드
-```bash
-docker build -t safeguard-ai-server .
-```
-
-### Docker 컨테이너 실행
-```bash
-docker run -d \
-  --name safeguard-ai \
-  -p 8000:8000 \
-  --env-file .env \
-  safeguard-ai-server
-```
 
 ## API 엔드포인트
 
@@ -160,13 +89,6 @@ curl -X POST http://localhost:8000/simulation/adaptive_turn \
   -H "Content-Type: application/json" \
   -d @test_request.json
 ```
-
-## 보안 주의사항
-
-- `.env` 파일을 절대 공개 저장소에 커밋하지 마세요
-- API 키는 환경 변수로만 관리하세요
-- GCP 서비스 계정 키 파일은 `.gitignore`에 포함되어 있습니다
-- 프로덕션 환경에서는 API 키 로테이션을 주기적으로 수행하세요
 
 ## 라이선스
 
