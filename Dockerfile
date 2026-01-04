@@ -25,4 +25,5 @@ EXPOSE 8000
 # 7. 서버 실행 명령어
 # 컨테이너가 시작될 때, 이 명령어를 자동으로 실행하여 FastAPI 서버를 구동합니다.
 # --host=0.0.0.0 옵션은 컨테이너 외부에서도 접속할 수 있게 해주는 중요한 설정입니다.
-CMD ["uvicorn", "main:app", "--host=0.0.0.0", "--port=8000"]
+# Cloud Run은 PORT 환경 변수를 사용하므로, 이를 지원하도록 수정했습니다.
+CMD exec uvicorn main:app --host=0.0.0.0 --port=${PORT:-8000}

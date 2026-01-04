@@ -18,7 +18,14 @@ else:
 # GCP 서비스 클라이언트는 gcloud 인증을 사용하므로 API 키 없이 초기화 가능
 #SPEECH_CLIENT = speech.SpeechClient()
 #TTS_CLIENT = texttospeech.TextToSpeechClient()
-VISION_CLIENT = vision.ImageAnnotatorClient()
+
+# Vision API 클라이언트 초기화 (Cloud Run 환경에서 에러 처리)
+try:
+    VISION_CLIENT = vision.ImageAnnotatorClient()
+    print("[Config] Vision API 클라이언트 초기화 성공")
+except Exception as e:
+    print(f"[Config Warning] Vision API 클라이언트 초기화 실패: {e}")
+    VISION_CLIENT = None
 
 # 사용할 Gemini 모델들을 미리 정의
 GEMINI_PRO_MODEL = genai.GenerativeModel('gemini-2.5-pro')
