@@ -1,0 +1,20 @@
+# --- 웹 서버 ---
+fastapi
+uvicorn[standard]
+
+# --- AI & Google Cloud ---
+google-generativeai
+google-cloud-aiplatform
+#google-cloud-speech
+#google-cloud-texttospeech
+google-cloud-vision
+
+# --- 데이터 처리 ---
+pandas
+scikit-learn
+jupyter
+
+# --- 기타 유틸리티 ---
+python-dotenv
+requests
+python-multipart

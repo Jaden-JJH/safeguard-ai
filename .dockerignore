@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+.git/
+.gitignore
+notebooks/
+data/
+_backup/
+*.csv
+*.json
+*.db
